@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=osiris_run
+#SBATCH --job-name=test_brewster
 #SBATCH --mail-user=avrut@umich.edu
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1

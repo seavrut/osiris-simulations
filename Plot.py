@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib.colors import LinearSegmentedColormap
 
+plt.rcParams['animation.ffmpeg_path'] = '~/.local/lib/python3.8/site-packages/ffmpeg'
+
 from tftb.processing.cohen import WignerVilleDistribution as WVD
 from tftb.processing.cohen import Spectrogram
 
