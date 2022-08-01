@@ -19,7 +19,5 @@ export deckdir=~/osiris-simulations/$RUN_NAME
 export execdir=~/osiris/bin
 export datadir=~/osiris-simulations/$RUN_NAME
 
-cd datadir
 rm -rf MS/ TIMINGS/ # clear previous run data
 mpirun $execdir/$EXEC $deckdir/$INPUT_DECK # run osiris
-python3 generate_videos.py
