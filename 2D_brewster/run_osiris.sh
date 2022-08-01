@@ -13,13 +13,12 @@
 
 export EXEC=osiris-2D.e 
 export INPUT_DECK=test_brewster.2d
-export RUN_NAME=2D\ brewster # folder we are running from
+export RUN_NAME=2D_brewster # folder we are running from
 
 export deckdir=~/osiris-simulations/$RUN_NAME
 export execdir=~/osiris/bin
 export datadir=~/osiris-simulations/$RUN_NAME
 
-cd datadir
 rm -rf MS/ TIMINGS/ # clear previous run data
 mpirun $execdir/$EXEC $deckdir/$INPUT_DECK # run osiris
 python3 generate_videos.py

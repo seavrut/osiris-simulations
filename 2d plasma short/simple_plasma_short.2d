@@ -84,36 +84,11 @@ udist
 }
 profile
 {
-  density = 0.4,
+  density = 0.5,
   
   profile_type = "math func",
   
-  math_func_expr = "(if((2.38*x1 + 1714 - x2 > 0) && (-1.32*x1 + 2912 - x2 > 0),
-	 if(-7.90*x1 + 3460 - x2 > 0,
-	 0.5 * tanh(0.005*(2.38*x1 - 652 - x2)) + 0.5,
-	 0.5 * tanh(0.005*(-1.32*x1 + 827 - x2)) + 0.5),
-	 0)
-
- + if((-1.32*x1 + 1775 - x2 < 0) && (2.38*x1 - 4723 - x2 < 0),
-	 if(-7.90*x1 + 13431 - x2 > 0,
-	 0.5 * tanh(0.005*(-(-1.32*x1 + 2239 - x2))) + 0.5,
-	 0.5 * tanh(0.005*(-(2.38*x1 - 4047 - x2))) + 0.5),
-	 0)
-
- + if((-2.38*x1 + 5275 - x2 < 0) && (1.32*x1 - 3755 - x2 < 0),
-	 if(7.90*x1 - 19752 - x2 < 0,
-	 0.5 * tanh(0.005*(-(-2.38*x1 + 5951 - x2))) + 0.5,
-	 0.5 * tanh(0.005*(-(1.32*x1 - 3292 - x2))) + 0.5),
-	 0)
-
- + if((1.32*x1 - 4240.5 - x2 > 0) && (-2.38*x1 + 10021.9 - x2 > 0),
-	 if(7.90*x1 - 29723 - x2 < 0,
-	 0.5 * tanh(0.005*(1.32*x1 - 4704 - x2)) + 0.5,
-	 0.5 * tanh(0.005*(-2.38*x1 + 9346 - x2)) + 0.5),
-	 0))
-
-*step(x2 + 400)*step(-x2 + 700)",
-
+  math_func_expr = "(if(1.41*x1 - 231 - x2 > 0, 1.0, 0.0))*step(x2 + 500)*step(-x2 + 700)",
    
 
 }
@@ -156,17 +131,18 @@ zpulse
   !chirp_coefs(2) = 0.0001,
 
   propagation = "forward",   ! launch the pulse with forward propagation (default)
-  
+
   !lon_type = "polynomial",   ! use a polynomial longitudinal envelope
   !lon_rise = 200.0,            ! use a 6.4 1/wp rise time
-  !lon_flat = 300.0,            ! hold the peak value for 0.0 length (i.e. don't hold it)
+  !lon_flat = 400.0,            ! hold the peak value for 0.0 length (i.e. don't hold it)
   !lon_fall = 200.0,            ! use a 6.4 1/wp fall time. The pulse will have a total length of 12.8
-  !lon_start = 0.0,           ! start the pulse exactly at the rigth edge of the simulation 
+  !lon_start = -50.0,           ! start the pulse exactly at the rigth edge of the simulation 
+
 
   lon_type = "gaussian",
-  lon_duration = 200.0,
-  lon_x0 = -400.0,
-  lon_range = 1000.0,
+  lon_duration = 300.0,
+  lon_x0 = -500.0,
+  lon_range = 1200.0,
 
   per_type = "gaussian",
   per_center = 0.0,
