@@ -2,8 +2,7 @@ import numpy as np
 import sys
 import os
 import matplotlib.pyplot as plt
-#plt.rcParams['animation.ffmpeg_path'] = '/sw/coe/centos7/o/ffmpeg/3.2.4/bin/ffmpeg'
-#sys.path.append('/sw/coe/centos7/o/ffmpeg/3.2.4/bin/')
+
 import matplotlib.animation as animation
 from matplotlib.colors import LinearSegmentedColormap
 #import ffmpeg
