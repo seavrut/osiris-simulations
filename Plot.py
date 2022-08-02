@@ -2,15 +2,18 @@ import numpy as np
 import sys
 import os
 import matplotlib.pyplot as plt
+#plt.rcParams['animation.ffmpeg_path'] = '/sw/coe/centos7/o/ffmpeg/3.2.4/bin/ffmpeg'
+#sys.path.append('/sw/coe/centos7/o/ffmpeg/3.2.4/bin/')
 import matplotlib.animation as animation
 from matplotlib.colors import LinearSegmentedColormap
+#import ffmpeg
 
-plt.rcParams['animation.ffmpeg_path'] = '~/.local/lib/python3.8/site-packages/ffmpeg'
 
 from tftb.processing.cohen import WignerVilleDistribution as WVD
 from tftb.processing.cohen import Spectrogram
 
-sys.path.append('/Users/avrutsky/College/Lab/pyVisOS/')
+sys.path.append('../../pyVisOS/')
+sys.path.append('../pyVisOS/')
 import osh5def
 import osh5io
 import osh5vis
