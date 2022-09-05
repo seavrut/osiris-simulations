@@ -12,4 +12,5 @@
 #SBATCH --output=/home/%u/log/%x-%j.log
 
 module load ffmpeg
+source ~/.venv/plasma/bin/activate
 python3 generate_videos.py

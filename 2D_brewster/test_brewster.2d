@@ -88,7 +88,7 @@ profile
   
   profile_type = "math func",
   
-  math_func_expr = "(if(1.41*x1 - 231 - x2 > 0, 1.0, 0.0))*step(x2 + 500)*step(-x2 + 800)",
+  math_func_expr = "(if(1.73*x1 - 312 - x2 > 0, 1.0, 0.0))*step(x2 + 500)*step(-x2 + 800)",
    
 
 }

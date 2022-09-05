@@ -1,15 +1,18 @@
 #!/bin/bash
 
-#SBATCH --job-name=test_brewster
+#SBATCH --job-name=test_brewster_30
 #SBATCH --mail-user=avrut@umich.edu
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=5000m
-#SBATCH --time=30:00
+#SBATCH --mem-per-cpu=4000m
+#SBATCH --time=12:00
 #SBATCH --account=engin1
 #SBATCH --partition=standard
-#SBATCH --output=/home/%u/osiris/log/%x-%j.log
+#SBATCH --output=/home/%u/log/%x-%j.log
+
+module load intel openmpi hdf5 ffmpeg
+source ~/.venv/plasma/bin/activate
 
 export EXEC=osiris-2D.e 
 export INPUT_DECK=test_brewster.2d
