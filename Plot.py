@@ -225,7 +225,7 @@ def cm_alpha(colormap:str):
     color_array = plt.get_cmap(colormap)(range(ncolors))
 
     # change alpha values
-    color_array[:,-1] = np.linspace(0.9,0.0,ncolors)
+    color_array[:,-1] = np.abs(np.linspace(-1, 1, ncolors))
 
     # create a colormap object
     map_object = LinearSegmentedColormap.from_list(name=colormap+'_alpha',colors=color_array)
@@ -248,12 +248,13 @@ def movie(dir:str, fps:int=15, res:int=1, out_name:str='out.mp4', overlay:bool=F
     fnms.sort()
     fnms = fnms[::res] # get every res-th file from directory
 
-    
+    c_map = kwargspassthrough.pop('cmap', 'PiYG')
+
     if overlay:
         ps_fnms = []
         ps_fnms = os.listdir('MS/PHA/x2x1/electrons/')
         ps_fnms.sort()
-        cm_alpha('autumn')
+        cm_alpha(c_map)
 
     data = osh5io.read_h5(fnms[0], dir)
 
@@ -272,7 +273,7 @@ def movie(dir:str, fps:int=15, res:int=1, out_name:str='out.mp4', overlay:bool=F
         ax = plt.axes(xlim=x1_limits, ylim=x2_limits)
     ax.grid()
 
-    im = osh5vis.osplot(data, **kwargspassthrough)[0]
+    im = osh5vis.osplot(data, cmap=c_map+'_alpha', zorder=100, **kwargspassthrough)[0]
 
     # initialization function: plot the background of each frame
     def init():
@@ -283,7 +284,9 @@ def movie(dir:str, fps:int=15, res:int=1, out_name:str='out.mp4', overlay:bool=F
         else:
             if overlay:
                 for f in ps_fnms:
-                    x(ax, f, colorbar=False, cmap='autumn_alpha', alpha=0.2);
+                    c=0.5
+                    colors = (1. - c) * plt.get_cmap("OrRd_r")(np.linspace(0., 1., 256)) + c * np.ones((256, 4))
+                    x(ax, f, colorbar=False, cmap=LinearSegmentedColormap.from_list(name='pastelOranges', colors=colors), zorder=0);
             return [im]
 
     # animation function.  This is called sequentially
